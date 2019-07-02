@@ -34,11 +34,13 @@ void printArr(int arr[],  int n)
 int main()
 {
 
-fstream file; 
+fstream file;
+ofstream ofile;
 int size=0; 
 string line;
 //istringstream istr; 
 file.open("data.txt", ios::in);
+ofile.open("insert.txt");
 file >> size; 
 getline(file, line);
 while(file)
@@ -56,6 +58,11 @@ for(int i =0; i< size; i++)
 }
 insertionSort(array,size);
 printArr(array, size);
+for(int i=0; i < size; i++)
+{
+  ofile << array[i] << " ";
+}
+ofile << "\n";
 //cout << endl; 
 
 file >> size;
@@ -63,6 +70,7 @@ getline(file,line);
 }
 
 file.close();
+ofile.close();
 return 0; 
 
 }
